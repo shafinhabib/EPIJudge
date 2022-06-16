@@ -2,7 +2,26 @@ from test_framework import generic_test
 
 
 def is_palindrome(s: str) -> bool:
-    # TODO - you fill in here.
+    left, right = 0, len(s)-1 
+    l, r = None, None
+    while left < right:
+        if s[left].isalnum():
+            l = s[left]
+        else:
+            left += 1
+        if s[right].isalnum():
+            r = s[right]
+        else:
+            right -= 1
+        
+        if l and r:
+            if l.lower() == r.lower():
+                l, r = None, None
+                left += 1
+                right -= 1
+
+            else:
+                return False
     return True
 
 
