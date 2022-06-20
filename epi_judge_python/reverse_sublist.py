@@ -4,10 +4,26 @@ from list_node import ListNode
 from test_framework import generic_test
 
 
-def reverse_sublist(L: ListNode, start: int,
-                    finish: int) -> Optional[ListNode]:
-    # TODO - you fill in here.
-    return None
+def reverse_sublist(L: ListNode, s: int,
+                    f: int) -> Optional[ListNode]:
+    w = []
+    if L is None or L.next is None:
+        return L
+
+    l = ListNode(0, L)
+    ptr = l
+    c = 0
+   
+    for i in range(1,s):
+        ptr = ptr.next
+
+    curr = ptr.next
+    for i in range(f-s):
+        temp = curr.next
+        curr.next = temp.next
+        temp.next = ptr.next
+        ptr.next = temp
+    return l.next
 
 
 if __name__ == '__main__':
